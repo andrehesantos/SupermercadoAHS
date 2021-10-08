@@ -3,7 +3,7 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<meta charset="UTF-8">
-	<title>Consultar Produtos</title>
+	<title>Consultar Clientes</title>
 	<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <!--Import materialize.css-->
@@ -13,23 +13,26 @@
     <link type="text/css" rel="stylesheet" href="materialize/css/style.css" />
 </head>
 <body>
-	<h3>Produtos Cadastrados no sistema:</h3>
+	<h3>Clientes Cadastrados no sistema:</h3>
 	<table class="responsive-table centered" border="1">
 		<thead>
 			<tr>
-			    <th>ID</th>
-				<th>Nome do produto</th>
-				<th>Valor Unitário</th>
-				<th>Quantidade em estoque</th>
+				<th>ID</th>
+				<th>Nome do Cliente</th>
+				<th>CPF</th>
+				<th>Email</th>
+				<th>Telefone/Celular</th>
+				<th>Situação</th>
 			</tr>
 		</thead>
 		<tbody>				
-			<tr th:each="produto: ${produto}">
-			    <td><span th:text="${produto.id_produto}"></span></td>
-				<td><span th:text="${produto.nome_produto}"></span></td>
-				<td><span th:text="${produto.valor_produto}"></span></td>
-				<td><span th:text="${produto.qtd_produto}"></span></td>
-				<td><button onclick="window.location.href='/atualizarProduto/${produto.id_produto}'">Editar Registro</button></td>
+			<tr th:each="cliente: ${cliente}">
+				<td><span th:text="${cliente.id_cliente}"></span></td>
+				<td><span th:text="${cliente.nome_cliente}"></span></td>
+				<td><span th:text="${cliente.cpf_cliente}"></span></td>
+				<td><span th:text="${cliente.email_cliente}"></span></td>
+				<td><span th:text="${cliente.telefone_cliente}"></span></td>
+				<td><span th:text="${cliente.status_cliente}"></span></td>
 		    </tr>
 		</tbody>    					
 	</table>

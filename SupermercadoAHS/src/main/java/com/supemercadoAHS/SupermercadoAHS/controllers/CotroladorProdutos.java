@@ -23,7 +23,7 @@ public class CotroladorProdutos {
 	@RequestMapping(value="/cadastrarProduto", method=RequestMethod.POST)
 	public String form(Produto prod) {
 		pr.save(prod);
-		return "redirect:/cadastrarProduto";
+		return "redirect:/consultarProdutos";
 	}
 	
 	@RequestMapping("/consultarProdutos")
@@ -33,5 +33,9 @@ public class CotroladorProdutos {
 		mv.addObject("produto", produtos);
 		return mv;
 	}
-		
+	
+	@RequestMapping("/atualizarProduto")
+	public String formatt() {
+		return "Produto/atualizarProduto";
+	}	
 }
