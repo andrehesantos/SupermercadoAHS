@@ -4,6 +4,7 @@ package com.supemercadoAHS.SupermercadoAHS.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,20 @@ public class ControladorCliente {
 		Iterable<Cliente> clientes = cr.findAll();
 		mv.addObject("cliente", clientes);
 		return mv;
+	}
+	
+	@RequestMapping(value="/atualizarCliente/{id_cliente}", method=RequestMethod.GET)
+	public ModelAndView atualizaCliente(@PathVariable("id_cliente") long id){
+		ModelAndView mv = new ModelAndView("Cliente/atualizarCliente");
+	    Cliente cli = cr.findById(id).get();
+	    mv.addObject("cliente", cli);
+	    return mv;
+	}
+	
+	@RequestMapping(value="atualizarCliente/{id_cliente}", method = RequestMethod.POST)
+	public String attCliente(Cliente cli) {
+		cr.save(cli);
+		return "redirect:/consultarClientes";
 	}
 	
 }

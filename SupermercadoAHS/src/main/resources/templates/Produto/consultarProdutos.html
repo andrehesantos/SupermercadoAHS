@@ -2,18 +2,19 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8"/>
 	<title>Consultar Produtos</title>
 	<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link type="text/css" rel="stylesheet" href="materialize/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="materialize/css/style.css"/>
 </head>
 <body>
 	<h3>Produtos Cadastrados no sistema:</h3>
+	<h4><a th:href="@{/cadastrarProduto}">Cadastrar novo</a></h4>
 	<table class="responsive-table centered" border="1">
 		<thead>
 			<tr>
@@ -29,9 +30,10 @@
 				<td><span th:text="${produto.nome_produto}"></span></td>
 				<td><span th:text="${produto.valor_produto}"></span></td>
 				<td><span th:text="${produto.qtd_produto}"></span></td>
-				<td><button onclick="window.location.href='/atualizarProduto/${produto.id_produto}'">Editar Registro</button></td>
+				<td><a th:href="@{/atualizarProduto/{id_produto}(id_produto=${produto.id_produto})}">Editar Registro</a></td>
 		    </tr>
 		</tbody>    					
 	</table>
+    <input class="waves-effect waves-light btn-small" type="button" onclick="window.history.back()" value="Voltar"/>
 </body>
 </html>

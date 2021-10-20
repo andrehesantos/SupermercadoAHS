@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.supemercadoAHS.SupermercadoAHS.models.Produto;
 
-public interface ProdutoRepository extends CrudRepository<Produto, String> {
+public interface ProdutoRepository extends CrudRepository<Produto, Long> {
 	
-	
+
 
 }
