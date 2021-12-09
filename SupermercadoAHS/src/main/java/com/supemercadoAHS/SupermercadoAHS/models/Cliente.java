@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Cliente {
@@ -27,6 +28,9 @@ public class Cliente {
 	
 	@Column(nullable=false)
 	private boolean status_cliente;
+	
+	@Transient
+	private String auxiliarCliente;
 	
 	public Cliente() {
 		
@@ -90,6 +94,12 @@ public class Cliente {
 		this.status_cliente = status_cliente;
 	}
 	
-	
+	public String getAuxiliarCliente() {
+		return auxiliarCliente;
+	}
+
+	public void setAuxiliarCliente(String auxiliarCliente) {
+		this.auxiliarCliente = auxiliarCliente;
+	}
 	
 }

@@ -35,6 +35,13 @@ public class ControladorCliente {
 	public ModelAndView mavCliente() {
 		ModelAndView mv = new ModelAndView("Cliente/consultarClientes");
 		Iterable<Cliente> clientes = cr.findAll();
+		for (Cliente cliente : clientes) {
+			if(cliente.isStatus_cliente() == true) {
+				cliente.setAuxiliarCliente("Ativo");
+			}
+			else
+				cliente.setAuxiliarCliente("Inativo");
+		}
 		mv.addObject("cliente", clientes);
 		return mv;
 	}
@@ -49,6 +56,29 @@ public class ControladorCliente {
 	
 	@RequestMapping(value="atualizarCliente/{id_cliente}", method = RequestMethod.POST)
 	public String attCliente(Cliente cli) {
+		cr.save(cli);
+		return "redirect:/consultarClientes";
+	}
+	
+	@RequestMapping(value = "/desativarCliente/{id_cliente}", method = RequestMethod.GET)
+	public ModelAndView desativarCliente(@PathVariable("id_cliente") long id) {
+		ModelAndView mv = new ModelAndView("Cliente/desativarCliente");
+		Cliente cli = cr.findById(id).get();
+		if(cli.isStatus_cliente() == true) {
+			cli.setAuxiliarCliente("Ativo");
+		}
+		else
+			cli.setAuxiliarCliente("Inativo");
+		mv.addObject("cliente", cli);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/desativarCliente/{id_cliente}", method = RequestMethod.POST)
+	public String desativaCliente(Cliente cli) {
+		if(cli.getAuxiliarCliente().equals("Ativo")){
+			cli.setStatus_cliente(false);}
+		else if (cli.getAuxiliarCliente().equals("Inativo"))
+			cli.setStatus_cliente(true);
 		cr.save(cli);
 		return "redirect:/consultarClientes";
 	}

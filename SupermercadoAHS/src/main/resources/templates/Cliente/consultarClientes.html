@@ -33,8 +33,9 @@
 				<td><span th:text="${cliente.cpf_cliente}"></span></td>
 				<td><span th:text="${cliente.email_cliente}"></span></td>
 				<td><span th:text="${cliente.telefone_cliente}"></span></td>
-				<td><span th:text="${cliente.status_cliente}"></span></td>
+				<td><span th:text="${cliente.auxiliarCliente}"></span></td>
 				<td><a th:href="@{/atualizarCliente/{id_cliente}(id_cliente=${cliente.id_cliente})}">Editar Registro</a></td>
+				<td><a th:href="@{/desativarCliente/{id_cliente}(id_cliente=${cliente.id_cliente})}">Ativar/Desativar Cliente</a></td>
 		    </tr>
 		</tbody>    					
 	</table>
